@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="Вопро"
+            android:text="@string/question"
             android:textColor="@color/white"
             android:textSize="20sp"/>
 
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="2/10"
+            android:text="@string/count"
             android:textColor="@color/white"
             android:textSize="20sp"/>
     </FrameLayout>
