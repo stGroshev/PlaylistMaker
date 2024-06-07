@@ -2,4 +2,5 @@
     <string name="app_name">Playlist Maker</string>
     <string name="question">Вопрос</string>
     <string name="count">2/10</string>
+    <string name="count_question">Рейтинг этого фильма больше, чем 9?:</string>
 </resources>
