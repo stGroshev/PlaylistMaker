@@ -33,24 +33,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Поиск"
+            android:text="@string/search"
             android:textSize="26dp"
             app:icon="@drawable/search"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
             app:cornerRadius="10dp"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Медиатека"/>
+            android:text="@string/media"
+            android:textSize="26dp"
+            app:icon="@drawable/search"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:cornerRadius="10dp"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Настройки"/>
+            android:text="@string/settings"
+            android:textSize="26dp"
+            app:icon="@drawable/search"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:cornerRadius="10dp"/>
     </LinearLayout>
 
 
