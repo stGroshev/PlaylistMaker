@@ -13,8 +13,7 @@
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            style="@style/Toolbar"
             android:foreground="?attr/selectableItemBackground"
             android:paddingStart="12dp"
             android:paddingTop="12dp"
@@ -23,18 +22,17 @@
             android:src="@drawable/arrow" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/TextViewSettingsActivity"
             android:paddingStart="12dp"
             android:paddingTop="10dp"
             android:text="@string/settings"
             android:textSize="@dimen/text_size"
-            android:textColor="@color/black"/>
+            android:textFontWeight="500"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingStart="16dp"
         android:paddingTop="24dp">
@@ -48,16 +46,11 @@
             android:paddingBottom="21dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/dark_theme"
-                android:textSize="@dimen/text_size_layout_settings"
-                android:textColor="@color/black"/>
+                style="@style/TextViewSettingsActivity"
+                android:text="@string/dark_theme" />
 
             <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/SizeViewSettingsActivity"/>
         </LinearLayout>
 
         <LinearLayout
@@ -69,16 +62,11 @@
             android:paddingBottom="21dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/share_app"
-                android:textSize="@dimen/text_size_layout_settings"
-                android:textColor="@color/black"/>
+                style="@style/TextViewSettingsActivity"
+                android:text="@string/share_app" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/IconSettingsActivity"
                 android:src="@drawable/share" />
         </LinearLayout>
 
@@ -91,16 +79,11 @@
             android:paddingBottom="21dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/write_to_support"
-                android:textSize="@dimen/text_size_layout_settings"
-                android:textColor="@color/black"/>
+                style="@style/TextViewSettingsActivity"
+                android:text="@string/write_to_support" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/IconSettingsActivity"
                 android:src="@drawable/support" />
         </LinearLayout>
 
@@ -113,17 +96,12 @@
             android:paddingBottom="21dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/user_agreement"
-                android:textSize="@dimen/text_size_layout_settings"
-                android:textColor="@color/black"/>
+                style="@style/TextViewSettingsActivity"
+                android:text="@string/user_agreement" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrow_right" />
+                style="@style/IconSettingsActivity"
+                android:src="@drawable/arrow_right"/>
         </LinearLayout>
 
 
