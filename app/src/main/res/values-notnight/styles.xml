@@ -46,4 +46,14 @@
     <style name="Toolbar" parent="SizeViewSettingsActivity">
         <item name="android:tint">@color/black</item>
     </style>
+
+    <style name="ListLinearLayoutSettingsActivity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingTop">21dp</item>
+        <item name="android:paddingBottom">21dp</item>
+    </style>
 </resources>
