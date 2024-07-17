@@ -20,8 +20,11 @@
         <item name="fontFamily">@font/ys_display_medium</item>
     </style>
 
-    <style name="BackgroundColor">
+    <style name="BackgroundColorMainActivity">
         <item name="android:background">@color/blue</item>
+    </style>
+    <style name="BackgroundColor">
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="TextViewSettingsActivity">
@@ -55,5 +58,34 @@
         <item name="android:paddingEnd">6dp</item>
         <item name="android:paddingTop">21dp</item>
         <item name="android:paddingBottom">21dp</item>
+    </style>
+
+    <style name="SearchPanel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:drawableLeft">@drawable/search</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:drawableTint">@color/gray</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:hint">@string/search</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingTop">8.5dp</item>
+        <item name="android:paddingBottom">8.5dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="ResetInput">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:src">@drawable/cross</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:tint">@color/gray</item>
+        <item name="android:paddingEnd">4dp</item>
     </style>
 </resources>

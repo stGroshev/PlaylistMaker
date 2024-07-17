@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
-    style="@style/BackgroundColor">
+    style="@style/BackgroundColorMainActivity">
 
     <FrameLayout
         android:id="@+id/panel_header"
