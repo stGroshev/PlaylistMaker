@@ -7,4 +7,10 @@
     <string name="share_app">Поделиться приложением</string>
     <string name="write_to_support">Написать в поддержку</string>
     <string name="user_agreement">Пользовательское соглашение</string>
+    <string name="subject_message">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="text_message">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+    <string name="yandex_practicum_android"><![CDATA[https://practicum.yandex.ru/android-developer/?utm_source=yandex&utm_medium=cpc&utm_campaign=Yan_Sch_RF_Prog_andrDe_b2c_Gener_Regular_1_460&utm_content=sty_search%3As_none%3Acid_103839289%3Agid_5365194553%3Akw_разработчик+андроид+приложений%3Apid_49131471018%3Aaid_15590369353%3Acrid_0%3Arid_49131471018%3Ap_1%3Apty_premium%3Amty_syn%3Amkw_%3Adty_desktop%3Acgcid_17978229%3Arn_Санкт-Петербург%3Arid_2&utm_term=разработчик+андроид+приложений&yclid=5897307560851537919]]></string>
+    <string name="share_using">Поделиться с помощью...</string>
+    <string name="email_developer">st.groshev96@gmail.com</string>
+    <string name="oferta_url">https://yandex.ru/legal/practicum_offer/</string>
 </resources>
