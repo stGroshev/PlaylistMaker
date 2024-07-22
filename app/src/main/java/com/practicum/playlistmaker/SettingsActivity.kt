@@ -20,35 +20,29 @@ class SettingsActivity : AppCompatActivity() {
         val share = findViewById<LinearLayout>(R.id.shareLinearLayout)
 
         back.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             finish()
         }
 
         userAgreement.setOnClickListener {
-            val address = Uri.parse("https://yandex.ru/legal/practicum_offer/")
-            val intent = Intent(ACTION_VIEW, address)
+            val intent = Intent(ACTION_VIEW, Uri.parse(this.getString(R.string.oferta_url)))
             startActivity(intent)
         }
 
         support.setOnClickListener {
-            val email = arrayOf("st.groshev96@gmail.com")
-            val subject = getString(R.string.subject_message)
-            val text = getString(R.string.text_message)
-
+            val email = arrayOf(getString(R.string.email_developer))
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.putExtra(Intent.EXTRA_EMAIL, email)
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject)
-            intent.putExtra(Intent.EXTRA_TEXT, text)
+            intent.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.subject_message))
+            intent.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.text_message))
 
             intent.data = Uri.parse("mailto:")
             startActivity(intent)
         }
 
         share.setOnClickListener {
-            val textMessage = getString(R.string.yandex_practicum_android)
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
-            intent.putExtra("Share this", textMessage)
+            intent.putExtra("Share this", this.getString(R.string.yandex_practicum_android))
             //добавил chooser чтоб посмотреть, чем он отличается от стандартного вызова меню выбора
             val chooser = Intent.createChooser(intent, getString(R.string.share_using))
             startActivity(chooser)

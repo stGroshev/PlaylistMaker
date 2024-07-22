@@ -54,7 +54,6 @@
             style="@style/ListLinearLayoutSettingsActivity"
             android:foreground="?attr/selectableItemBackground">
 
-
             <TextView
                 style="@style/TextViewSettingsActivity"
                 android:text="@string/share_app" />
