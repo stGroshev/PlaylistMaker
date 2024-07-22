@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.view.isVisible
 
 class SearchActivity : AppCompatActivity() {
     private var value = TEXT_EDITTEXT
@@ -32,13 +32,15 @@ class SearchActivity : AppCompatActivity() {
             val imm = this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(searchPanel.windowToken, 0)
             searchPanel.isCursorVisible = false
+            resetInput.isVisible = false
         }
         val simpleTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                resetInput.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
-                searchPanel.isCursorVisible = true
+                resetInput.isVisible = true
+              //resetInput.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+               searchPanel.isCursorVisible = true
 
             }
 
@@ -65,8 +67,8 @@ class SearchActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val KEY = "KEY"
-        const val TEXT_EDITTEXT: String = ""
+        private const val KEY = "KEY"
+        private const val TEXT_EDITTEXT: String = ""
     }
 
 
