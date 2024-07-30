@@ -14,13 +14,13 @@
         <ImageView
             android:id="@+id/arrow_search_activity"
             style="@style/Toolbar"
+            android:contentDescription="@string/app_name"
             android:foreground="?attr/selectableItemBackground"
             android:paddingStart="12dp"
             android:paddingTop="12dp"
             android:paddingEnd="12dp"
             android:paddingBottom="12dp"
-            android:src="@drawable/arrow"
-            android:contentDescription="@string/app_name"/>
+            android:src="@drawable/arrow" />
 
         <TextView
             style="@style/TextViewSettingsActivity"
@@ -38,22 +38,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_radius">
+
+        android:background="@drawable/edit_text_radius"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/search_panel"
             style="@style/SearchPanel"
-            android:cursorVisible="true"/>
+            android:cursorVisible="true" />
 
         <ImageView
             android:id="@+id/reset_input"
-            style="@style/ResetInput"/>
+            style="@style/ResetInput" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rsw_track_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="12dp"
+        android:paddingTop="16dp"/>
 
 
 </LinearLayout>
