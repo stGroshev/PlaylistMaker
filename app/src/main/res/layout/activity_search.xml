@@ -48,11 +48,13 @@
         <EditText
             android:id="@+id/search_panel"
             style="@style/SearchPanel"
-            android:cursorVisible="true" />
+            android:cursorVisible="true"
+            android:imeOptions="actionDone"
+            android:singleLine="true"/>
 
         <ImageView
             android:id="@+id/reset_input"
-            style="@style/ResetInput" />
+            style="@style/ResetInput"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -61,7 +63,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="12dp"
-        android:paddingTop="16dp"/>
+        android:paddingTop="16dp" />
+
+    <TextView
+        android:id="@+id/placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ТЕКСТ"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"
+        android:visibility="gone"/>
 
 
 </LinearLayout>
