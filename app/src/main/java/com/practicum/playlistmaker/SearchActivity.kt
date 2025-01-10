@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -37,6 +38,10 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var rswTrackList: RecyclerView
     private lateinit var placeholderNotFound: LinearLayout
     private lateinit var placeholderNotInternet: LinearLayout
+    private lateinit var btnUpdate: Button
+
+    private var lastQuery: String = ""
+
 
     private var itunesBaseUrl = "https://itunes.apple.com"
     private val trackListAdapter = TrackListAdapter()
@@ -70,6 +75,7 @@ class SearchActivity : AppCompatActivity() {
         placeholderNotFound = findViewById(R.id.placeholder_not_found)
         rswTrackList = findViewById(R.id.rsw_track_list)
         placeholderNotInternet = findViewById(R.id.placeholder_not_internet)
+        btnUpdate = findViewById(R.id.btn_update)
 
         rswTrackList.layoutManager = LinearLayoutManager(this)
         rswTrackList.adapter = trackListAdapter
@@ -120,57 +126,52 @@ class SearchActivity : AppCompatActivity() {
 
                     searchPanel.isCursorVisible = false //скрываем курсор
 
-                    itunesService.search(searchPanel.text.toString()).enqueue(object :
-                        Callback<TracksResponse> {
-                        override fun onResponse(
-                            call: Call<TracksResponse>,
-                            response: Response<TracksResponse>
-                        ) {
-                            if (response.code() == 200) {
-                                trackList.clear()
-                                if (response.body()?.results?.isNotEmpty() == true) {
-                                    trackList.addAll(response.body()?.results!!)
-                                    trackListAdapter.updateTracks(trackList)
-                                    rswTrackList.visibility = View.VISIBLE
-                                    placeholderNotFound.visibility = View.GONE
-                                }
-                                if (trackList.isEmpty()) {
-                                    rswTrackList.visibility = View.GONE
-                                    placeholderNotFound.visibility = View.VISIBLE
-                                }
-                            } else {
-                                rswTrackList.visibility = View.GONE
-                                placeholderNotInternet.visibility = View.VISIBLE
-                            }
-                        }
+                    lastQuery = searchPanel.text.toString() // сохраняем последний запрос в переменную
 
-                        override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-                            rswTrackList.visibility = View.GONE
-                            placeholderNotInternet.visibility = View.VISIBLE
-                        }
-                    })
-
+                    performSearch(lastQuery)
                 }
                 true
             }
             false
         }
-    }
 
-    /*private fun showMessage(text: String, additionalMessage: String) {
-        if (text.isNotEmpty()) {
-            placeholder.visibility = View.VISIBLE
-            trackList.clear()
-            trackListAdapter.notifyDataSetChanged()
-            placeholder.text = text
-            if (additionalMessage.isNotEmpty()) {
-                Toast.makeText(applicationContext, additionalMessage, Toast.LENGTH_LONG)
-                    .show()
+        btnUpdate.setOnClickListener {
+            if (lastQuery.isNotEmpty()) {
+                performSearch(lastQuery)
+            } else {
+                Toast.makeText(this, "Введите запрос для поиска", Toast.LENGTH_SHORT).show()
             }
-        } else {
-            placeholder.visibility = View.GONE
         }
-    }*/
+    }
+    private fun performSearch (query: String){
+        itunesService.search(searchPanel.text.toString()).enqueue(object :
+            Callback<TracksResponse> {
+            override fun onResponse(
+                call: Call<TracksResponse>,
+                response: Response<TracksResponse>
+            ) {
+                if (response.code() == 200) {
+                    trackList.clear()
+                    if (response.body()?.results?.isNotEmpty() == true) {
+                        trackList.addAll(response.body()?.results!!)
+                        trackListAdapter.updateTracks(trackList)
+                        rswTrackList.visibility = View.VISIBLE
+                        placeholderNotFound.visibility = View.GONE
+                    }
+                    if (trackList.isEmpty()) {
+                        rswTrackList.visibility = View.GONE
+                        placeholderNotFound.visibility = View.VISIBLE
+                    }
+                } else {
+                    rswTrackList.visibility = View.GONE
+                    placeholderNotInternet.visibility = View.VISIBLE
+                }
+            }
 
-
+            override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
+                rswTrackList.visibility = View.GONE
+                placeholderNotInternet.visibility = View.VISIBLE
+            }
+        })
+    }
 }

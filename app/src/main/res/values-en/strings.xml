@@ -17,4 +17,5 @@
     <string name="not_found">Nothing was found</string>
     <string name="not_internet">Communication problems</string>
     <string name="not_internet_text">The download failed. Check your internet connection</string>
+    <string name="update">Update</string>
 </resources>
