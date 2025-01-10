@@ -18,13 +18,13 @@ class TrackListViewHolder ( parent: ViewGroup):
     private val poster = itemView.findViewById<ImageView>(R.id.poster)
     private val trackName = itemView.findViewById<TextView>(R.id.track_name)
     private val artistName = itemView.findViewById<TextView>(R.id.artist_name)
-    private val trackTime = itemView.findViewById<TextView>(R.id.track_time)
+    private val trackTimeMillis = itemView.findViewById<TextView>(R.id.track_time)
 
     fun bind(model: Track) {
 
-        trackName.text = model.trackName
-        artistName.text = model.artistName
-        trackTime.text = model.trackTime
+        trackName.text = trimTrailingSpaces(model.trackName)
+        artistName.text = trimTrailingSpaces(model.artistName)
+        trackTimeMillis.text = formatTrackTime(model.trackTimeMillis)
 
         Glide.with(itemView)
             .load(model.artworkUrl100)
@@ -33,6 +33,14 @@ class TrackListViewHolder ( parent: ViewGroup):
             .into(poster)
     }
 
+    fun formatTrackTime(durationMillis: Int): String {
+        val minutes = durationMillis / 1000 / 60
+        val seconds = (durationMillis / 1000) % 60
+        return String.format("%02d:%02d", minutes, seconds)
+    }
 
+    fun trimTrailingSpaces(input: String): String {
+        return input.trimEnd()
+    }
 
 }

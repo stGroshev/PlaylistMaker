@@ -13,4 +13,7 @@
     <string name="share_using">Поделиться с помощью...</string>
     <string name="email_developer">st.groshev96@gmail.com</string>
     <string name="oferta_url">https://yandex.ru/legal/practicum_offer/</string>
+    <string name="not_found">Ничего не нашлось</string>
+    <string name="not_internet">Проблемы со связью</string>
+    <string name="not_internet_text">Загрузка не удалась. Проверьте подключение к интернету</string>
 </resources>

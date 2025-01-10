@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/BackgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     android:orientation="vertical">
+    <!-- style="@style/BackgroundColor"-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
 
         <ImageView
             android:id="@+id/arrow_search_activity"
@@ -50,29 +51,77 @@
             style="@style/SearchPanel"
             android:cursorVisible="true"
             android:imeOptions="actionDone"
-            android:singleLine="true"/>
+            android:singleLine="true" />
 
         <ImageView
             android:id="@+id/reset_input"
-            style="@style/ResetInput"/>
+            style="@style/ResetInput" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rsw_track_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="12dp"
-        android:paddingTop="16dp" />
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/placeholder"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rsw_track_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:paddingTop="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/placeholder_not_found"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ТЕКСТ"
-        android:textSize="20sp"
-        android:layout_marginStart="8dp"
-        android:visibility="gone"/>
+        android:orientation="vertical"
+        android:visibility="gone">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/placeholder_not_found"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/not_found"
+            style="@style/placeholder_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/placeholder_not_internet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           style="@style/placeholder_not_internet"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/not_internet"
+            style="@style/placeholder_text"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/not_internet_text"
+            style="@style/placeholder_text"/>
+    </LinearLayout>
 
 </LinearLayout>
+
+

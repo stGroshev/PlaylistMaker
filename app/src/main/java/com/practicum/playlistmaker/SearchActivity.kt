@@ -1,6 +1,7 @@
 package com.practicum.playlistmaker
 
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +11,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -33,7 +35,8 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var searchPanel: EditText
     private lateinit var resetInput: ImageView
     private lateinit var rswTrackList: RecyclerView
-    private lateinit var placeholder: TextView
+    private lateinit var placeholderNotFound: LinearLayout
+    private lateinit var placeholderNotInternet: LinearLayout
 
     private var itunesBaseUrl = "https://itunes.apple.com"
     private val trackListAdapter = TrackListAdapter()
@@ -64,8 +67,9 @@ class SearchActivity : AppCompatActivity() {
 
         searchPanel = findViewById(R.id.search_panel)
         resetInput = findViewById(R.id.reset_input)
-        placeholder = findViewById(R.id.placeholder)
+        placeholderNotFound = findViewById(R.id.placeholder_not_found)
         rswTrackList = findViewById(R.id.rsw_track_list)
+        placeholderNotInternet = findViewById(R.id.placeholder_not_internet)
 
         rswTrackList.layoutManager = LinearLayoutManager(this)
         rswTrackList.adapter = trackListAdapter
@@ -81,6 +85,11 @@ class SearchActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(searchPanel.windowToken, 0)
             searchPanel.isCursorVisible = false
             resetInput.isVisible = false
+
+            trackList.clear()
+            trackListAdapter.updateTracks(trackList)
+            placeholderNotFound.visibility = View.GONE
+            placeholderNotInternet.visibility = View.GONE
         }
 
         val simpleTextWatcher = object : TextWatcher {
@@ -105,6 +114,12 @@ class SearchActivity : AppCompatActivity() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
 
                 if (searchPanel.text.isNotEmpty()) {
+
+                    val inputMethodManager = searchPanel.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(searchPanel.windowToken, 0) // скрываем клавиатуру
+
+                    searchPanel.isCursorVisible = false //скрываем курсор
+
                     itunesService.search(searchPanel.text.toString()).enqueue(object :
                         Callback<TracksResponse> {
                         override fun onResponse(
@@ -115,26 +130,23 @@ class SearchActivity : AppCompatActivity() {
                                 trackList.clear()
                                 if (response.body()?.results?.isNotEmpty() == true) {
                                     trackList.addAll(response.body()?.results!!)
-                                    trackListAdapter.notifyDataSetChanged()
+                                    trackListAdapter.updateTracks(trackList)
+                                    rswTrackList.visibility = View.VISIBLE
+                                    placeholderNotFound.visibility = View.GONE
                                 }
                                 if (trackList.isEmpty()) {
-                                    showMessage("Ничего не нашлось", "")
-                                } else {
-                                    showMessage("", "")
+                                    rswTrackList.visibility = View.GONE
+                                    placeholderNotFound.visibility = View.VISIBLE
                                 }
                             } else {
-                                showMessage(
-                                    "Нет соединения с интернетом",
-                                    response.code().toString()
-                                )
+                                rswTrackList.visibility = View.GONE
+                                placeholderNotInternet.visibility = View.VISIBLE
                             }
                         }
 
                         override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-                            showMessage(
-                                "Нет соединения с интернетом",
-                                t.message.toString()
-                            )
+                            rswTrackList.visibility = View.GONE
+                            placeholderNotInternet.visibility = View.VISIBLE
                         }
                     })
 
@@ -145,7 +157,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun showMessage(text: String, additionalMessage: String) {
+    /*private fun showMessage(text: String, additionalMessage: String) {
         if (text.isNotEmpty()) {
             placeholder.visibility = View.VISIBLE
             trackList.clear()
@@ -158,6 +170,7 @@ class SearchActivity : AppCompatActivity() {
         } else {
             placeholder.visibility = View.GONE
         }
-    }
+    }*/
+
 
 }

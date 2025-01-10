@@ -23,9 +23,11 @@
 
         <TextView
             android:id="@+id/track_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Smells Like Teen Spirit"
+            android:ellipsize="end"
+            android:maxLines="1"
             style="@style/TrackName" />
 
         <LinearLayout
@@ -38,7 +40,10 @@
                 android:id="@+id/artist_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:hint="Nirvana"
+                android:ellipsize="end"
+                android:maxLines="1"
                 style="@style/TrackAttributes"/>
 
             <ImageView
