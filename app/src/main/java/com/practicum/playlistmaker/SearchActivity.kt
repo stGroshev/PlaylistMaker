@@ -103,7 +103,7 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 resetInput.isVisible = true
-                //resetInput.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+                resetInput.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
                 searchPanel.isCursorVisible = true
 
             }
@@ -144,6 +144,11 @@ class SearchActivity : AppCompatActivity() {
         }
     }
     private fun performSearch (query: String){
+
+        placeholderNotFound.visibility = View.GONE
+        placeholderNotInternet.visibility = View.GONE
+        rswTrackList.visibility = View.GONE
+
         itunesService.search(searchPanel.text.toString()).enqueue(object :
             Callback<TracksResponse> {
             override fun onResponse(
@@ -156,20 +161,16 @@ class SearchActivity : AppCompatActivity() {
                         trackList.addAll(response.body()?.results!!)
                         trackListAdapter.updateTracks(trackList)
                         rswTrackList.visibility = View.VISIBLE
-                        placeholderNotFound.visibility = View.GONE
                     }
                     if (trackList.isEmpty()) {
-                        rswTrackList.visibility = View.GONE
                         placeholderNotFound.visibility = View.VISIBLE
                     }
                 } else {
-                    rswTrackList.visibility = View.GONE
                     placeholderNotInternet.visibility = View.VISIBLE
                 }
             }
 
             override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-                rswTrackList.visibility = View.GONE
                 placeholderNotInternet.visibility = View.VISIBLE
             }
         })

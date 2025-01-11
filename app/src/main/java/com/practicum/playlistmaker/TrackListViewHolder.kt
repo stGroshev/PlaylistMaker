@@ -25,6 +25,7 @@ class TrackListViewHolder ( parent: ViewGroup):
         trackName.text = trimTrailingSpaces(model.trackName)
         artistName.text = trimTrailingSpaces(model.artistName)
         trackTimeMillis.text = formatTrackTime(model.trackTimeMillis)
+        artistName.invalidate()
 
         Glide.with(itemView)
             .load(model.artworkUrl100)
