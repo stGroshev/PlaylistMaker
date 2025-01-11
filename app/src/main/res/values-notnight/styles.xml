@@ -23,7 +23,7 @@
     <style name="BackgroundColorMainActivity">
         <item name="android:background">@color/blue</item>
     </style>
-    <style name="BackgroundColor">
+   <style name="BackgroundColor">
         <item name="android:background">@color/white</item>
     </style>
 
@@ -64,13 +64,13 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:background">@null</item>
+        <item name="android:background">@drawable/edit_text_radius</item>
         <item name="android:drawableLeft">@drawable/search</item>
-        <item name="android:drawablePadding">4dp</item>
-        <item name="android:drawableTint">@color/gray</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:drawablePadding">8dp</item>
+       <item name="android:drawableTint">@color/gray</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:inputType">textNoSuggestions|textVisiblePassword</item>
         <item name="android:hint">@string/search</item>
-        <item name="android:inputType">text</item>
         <item name="android:paddingStart">14dp</item>
         <item name="android:paddingTop">8.5dp</item>
         <item name="android:paddingBottom">8.5dp</item>
@@ -78,6 +78,7 @@
         <item name="android:textColorHint">@color/gray</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:maxLines">1</item>
+        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
     </style>
 
     <style name="ResetInput">
@@ -105,6 +106,37 @@
 
     <style name="iconColor">
         <item name="tint">@color/gray</item>
+    </style>
+
+    <style name="placeholder_not_found">
+        <item name="android:layout_marginTop">102dp</item>
+        <item name="android:src">@drawable/placeholder_not_found_light</item>
+    </style>
+
+    <style name="placeholder_not_internet">
+        <item name="android:layout_marginTop">102dp</item>
+        <item name="android:src">@drawable/placeholder_not_internet_light</item>
+    </style>
+
+    <style name="placeholder_text">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/not_found</item>
+        <item name="android:textColor">@color/background_dark_mode</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="Button_update">
+        <item name="android:backgroundTint">@color/background_dark_mode</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="cornerRadius">54dp</item>
+        <item name="android:text">@string/update</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 

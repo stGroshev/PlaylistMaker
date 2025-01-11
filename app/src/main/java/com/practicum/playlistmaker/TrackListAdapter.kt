@@ -1,22 +1,27 @@
 package com.practicum.playlistmaker
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class TrackListAdapter(val trackList: List<Track>):RecyclerView.Adapter<TrackListViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackListViewHolder {
+class TrackListAdapter : RecyclerView.Adapter<TrackListViewHolder>() {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.track_list_view_holder, parent, false)
-        return TrackListViewHolder(view)
+    private val list = ArrayList<Track>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackListViewHolder {
+        return TrackListViewHolder(parent)
     }
 
     override fun getItemCount(): Int {
-    return trackList.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: TrackListViewHolder, position: Int) {
-        holder.bind(trackList[position])
+        holder.bind(list[position])
     }
 
+    fun updateTracks(newTracks: List<Track>) {
+        list.clear()
+        list.addAll(newTracks)
+        notifyDataSetChanged()
+    }
 }
