@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -39,10 +40,10 @@
 
             <TextView
                 android:id="@+id/artist_name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Nirvana"
+                tools:text="Nirvana"
                 android:ellipsize="end"
                 android:maxLines="1"
                 style="@style/TrackAttributes"/>
@@ -58,7 +59,8 @@
                 android:id="@+id/track_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="5:01"
+                android:layout_weight="0"
+                tools:text="5:01"
                 style="@style/TrackAttributes" />
         </LinearLayout>
 
